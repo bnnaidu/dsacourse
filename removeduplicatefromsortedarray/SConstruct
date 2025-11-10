@@ -1,0 +1,8 @@
+# Define environment with compiler and flags
+env = Environment(CXX="g++", CXXFLAGS="-std=c++17 -Wall")
+
+# Add include directories (if you have header files)
+env.Append(CPPPATH=["/usr/include", "/usr/local/include"])
+
+# Build executable 'prog' from main.cpp
+env.Program(target="prog", source=["main.cpp"])
