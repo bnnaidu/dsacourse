@@ -4,29 +4,32 @@
 
 bool isPalindrome(const std::string &str)
 {
-    int left = 0;
-    int right = str.length() - 1;
+    int i = 0;
+    int j = str.length() - 1;
 
-    while (left < right)
+    while (i < j)
     {
-        // Move left index to the next alphanumeric character
-        while (left < right && !std::isalnum(str[left]))
+        char left = str[i];
+        char right = str[j];
+
+        if (!std::isalnum(left))
         {
-            left++;
+            i++;
+            continue;
         }
-        // Move right index to the previous alphanumeric character
-        while (left < right && !std::isalnum(str[right]))
+        if (!std::isalnum(right))
         {
-            right--;
+            j--;
+            continue;
         }
 
         // Compare characters in a case-insensitive manner
-        if (std::tolower(str[left]) != std::tolower(str[right]))
+        if (std::tolower(left) != std::tolower(right))
         {
             return false;
         }
-        left++;
-        right--;
+        i++;
+        j--;
     }
     return true;
 }
